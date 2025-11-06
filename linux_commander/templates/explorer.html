@@ -1,0 +1,41 @@
+<!-- templates/explorer.html -->
+{% extends "index.html" %}
+{% block content %}
+<h1>File Explorer</h1>
+<p>Current Path: <code>{{ current_path }}</code></p>
+<form action="/zip" method="post">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select-all"></th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if parent_path %}
+            <tr>
+                <td></td>
+                <td colspan="3"><a href="/?path={{ parent_path }}">.. (Parent Directory)</a></td>
+            </tr>
+            {% endif %}
+            {% for item in contents %}
+            <tr>
+                <td><input type="checkbox" name="selected_items" value="{{ item.path }}"></td>
+                <td>
+                    {% if item.is_dir %}
+                        <a href="/?path={{ item.path }}">{{ item.name }}</a>
+                    {% else %}
+                        {{ item.name }}
+                    {% endif %}
+                </td>
+                <td>{{ item.size }}</td>
+                <td>{{ item.modified }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Download as Zip</button>
+</form>
+{% endblock %}
