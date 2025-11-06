@@ -22,6 +22,9 @@ dependencies = [
     "humanize",
     "werkzeug",
 ]
-
+[tool.setuptools.package-data]
+keylock_flask = [
+    "templates/*",
+]
 [project.scripts]
 linux-commander = "linux_commander.app:main"
