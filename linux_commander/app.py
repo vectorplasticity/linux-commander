@@ -236,5 +236,15 @@ def zip_files():
     memory_file.seek(0)
     return send_file(memory_file, download_name='archive.zip', as_attachment=True)
 
+def main():
+    """
+    This function is called when the user runs the 'dependaxy' command.
+    """
+    print("--- Starting Linux Commander Server ---")
+    print("--- Navigate to http://127.0.0.1:5000 in your browser ---")
+    print("--- Press Ctrl+C to stop the server ---")
+    # For production, a real WSGI server like Gunicorn or Waitress is recommended.
+    app.run(host='127.0.0.1', port=5000, debug=False)
+
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5001, debug=True)
+    app.run(debug=True, port=5000)
