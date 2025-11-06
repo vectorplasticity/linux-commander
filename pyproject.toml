@@ -23,7 +23,7 @@ dependencies = [
     "werkzeug",
 ]
 [tool.setuptools.package-data]
-keylock_flask = [
+linux_commander = [
     "templates/*",
 ]
 [project.scripts]
