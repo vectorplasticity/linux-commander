@@ -9,7 +9,9 @@ import io
 import re
 from math import ceil
 
-app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__, template_folder=os.path.join(basedir, 'templates'))
 app.secret_key = os.urandom(24) # Needed for flashing messages
 
 # --- CONFIGURATION ---
